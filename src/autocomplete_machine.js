@@ -30,8 +30,10 @@ const autocompleteMachine = Machine({
         FOCUS: "focused"
       },
       meta: {
-        test: ({ container }) =>
-          expect(container.querySelector("input")).toBeDefined()
+        test: ({ queryByRole, container }) => {
+          expect(container.querySelector("input")).toBeDefined();
+          expect(container.querySelectorAll("[role=option]")).toHaveLength(0);
+        }
       }
     },
     focused: {
@@ -94,7 +96,11 @@ const autocompleteMachine = Machine({
                 MOUSE_CLICK_ITEM: "#autocomplete.blur"
               },
               meta: {
-                test: ({ container }) => expect(1).toBe(1)
+                test: ({ container }) =>
+                  // the listbox is there but with zero elements
+                  expect(
+                    container.querySelectorAll("[role=option]").length
+                  ).toBeGreaterThanOrEqual(1)
               },
 
               states: {
