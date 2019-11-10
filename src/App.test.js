@@ -5,7 +5,7 @@ import { Machine, assign } from "xstate";
 import { createModel } from "@xstate/test";
 
 import { machineConfig } from "./autocomplete_machine";
-import withStateValidators from "./with_state_validators";
+import { withStateValidators, requiredStateValidators } from "./glue";
 
 import { getSuggestions } from "./Autocomplete";
 
@@ -100,6 +100,11 @@ const autocompleteMachine = Machine(
 const autocompleteModel = createModel(autocompleteMachine).withEvents(events);
 const testPlans = autocompleteModel.getSimplePathPlans();
 
+// in case one wants to find out all the state validators required
+// by the machine
+const statesWhichNeedValidators = requiredStateValidators(machineConfig);
+console.log({ statesWhichNeedValidators });
+
 testPlans.forEach(plan => {
   afterEach(cleanup);
 
@@ -112,8 +117,3 @@ testPlans.forEach(plan => {
   });
 });
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
