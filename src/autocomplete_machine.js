@@ -17,6 +17,7 @@ export const machineConfig = {
       on: {
         BLUR: "blur",
         MOUSE_CLICK_OUTSIDE: "blur",
+        // TODO - add another event called TYPE or ADD_TEXT
         CHANGE_TEXT: {
           target: "focused.match",
           actions: [assign({ text: (ctx, e) => e.text })]

@@ -7,16 +7,15 @@ context("Autocomplete", () => {
 
   testPlans.forEach(plan => {
     plan.paths.forEach(path => {
-      console.log(path.description, path.test.toString());
       it(path.description, async () => {
         await path.test(cy);
       });
     });
   });
 
-  it.skip("should show autocomplete page", () => {
+  it("should show autocomplete page", () => {
     cy.get("[role=option]").should("not.exist");
-    // cy.get("input").focus();
+    cy.get("input").focus();
     // cy.get("input").should("have.focus");
     // cy.get("[role=listbox]")
     // .get("[role=options]")

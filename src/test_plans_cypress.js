@@ -23,7 +23,10 @@ const events = {
   BLUR: cy => cy.get("input").blur(),
   CHANGE_TEXT: {
     exec: (cy, event) => {
-      return cy.get("input").type(event.text);
+      return cy
+        .get("input")
+        .clear()
+        .type(event.text);
     },
     cases: [{ text: "a" }, { text: "b" }]
   },
