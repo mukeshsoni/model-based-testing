@@ -1,8 +1,9 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
-import top100Films from "./top_films";
-import "./autocomplete.css";
 
+import { getSuggestions } from "./matchers";
+
+import "./autocomplete.css";
 // Imagine you have a list of languages that you'd like to autosuggest.
 const languages = [
   {
@@ -14,18 +15,6 @@ const languages = [
     year: 2012
   }
 ];
-
-// Teach Autosuggest how to calculate suggestions for any given input value.
-export const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0
-    ? top100Films
-    : top100Films.filter(
-        lang => lang.title.toLowerCase().slice(0, inputLength) === inputValue
-      );
-};
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
