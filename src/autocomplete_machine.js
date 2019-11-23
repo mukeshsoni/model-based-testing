@@ -50,7 +50,7 @@ export const machineConfig = {
               initial: "not_selected",
               on: {
                 ARROW_KEY: "non_empty.selected",
-                MOUSE_CLICK_ITEM: "#autocomplete.blur"
+                MOUSE_CLICK_ITEM: "#autocomplete.focused"
               },
               states: {
                 not_selected: {},
