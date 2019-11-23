@@ -6,9 +6,11 @@ context("Autocomplete", () => {
   });
 
   testPlans.forEach(plan => {
-    plan.paths.forEach(path => {
-      it(path.description, async () => {
-        await path.test(cy);
+    describe(plan.description, () => {
+      plan.paths.forEach(path => {
+        it(path.description, async () => {
+          await path.test(cy);
+        });
       });
     });
   });
