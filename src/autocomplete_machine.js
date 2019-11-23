@@ -56,7 +56,7 @@ export const machineConfig = {
                 not_selected: {},
                 selected: {
                   on: {
-                    ENTER_KEY: "#autocomplete.blur"
+                    ENTER_KEY: "#autocomplete.focused"
                   }
                 }
               }

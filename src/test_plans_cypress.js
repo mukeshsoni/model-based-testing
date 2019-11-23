@@ -19,55 +19,93 @@ function shouldHideList(ctx) {
 }
 
 const events = {
-  FOCUS: cy => cy.get("input").focus(),
-  BLUR: cy => cy.get("input").blur(),
+  FOCUS: cy =>
+    cy
+      .get("input")
+      .focus()
+      .promisify(),
+  BLUR: cy =>
+    cy
+      .get("input")
+      .blur()
+      .promisify(),
   CHANGE_TEXT: {
-    exec: (cy, event) => {
-      return cy
+    exec: async (cy, event) => {
+      await cy
         .get("input")
         .clear()
-        .type(event.text);
+        .type(event.text)
+        .promisify();
     },
     cases: [{ text: "a" }, { text: "b" }]
   },
-  ARROW_KEY: cy => cy.get("input").type("{downarrow}"),
-  ENTER_KEY: cy => cy.get("input").type("{enter}"),
+  ARROW_KEY: cy =>
+    cy
+      .get("input")
+      .type("{downarrow}")
+      .promisify(),
+  ENTER_KEY: cy =>
+    cy
+      .get("input")
+      .type("{enter}")
+      .promisify(),
   MOUSE_CLICK_ITEM: cy => {
-    return cy.get("[role=option]").then(items => {
-      const randomItemIndex = Math.floor(Math.random() * items.length);
-      const randomSuggestedItem = items[randomItemIndex];
-      return randomSuggestedItem.click();
-    });
+    return cy
+      .get("[role=option]")
+      .then(items => {
+        const randomItemIndex = Math.floor(Math.random() * items.length);
+        const randomSuggestedItem = items[randomItemIndex];
+        return randomSuggestedItem.click();
+      })
+      .promisify();
   },
-  MOUSE_CLICK_OUTSIDE: cy => cy.get("input").blur()
+  MOUSE_CLICK_OUTSIDE: cy =>
+    cy
+      .get("input")
+      .blur()
+      .promisify()
 };
 
 const stateValidators = {
-  blur: cy => {
-    return cy.get("input").should("have.blur");
-  },
-  focused: cy => cy.get("input").should("have.focus"),
+  blur: async cy =>
+    await cy
+      .get("input")
+      .should("not.have.focus")
+      .promisify(),
+  focused: cy =>
+    cy
+      .get("input")
+      .should("have.focus")
+      .promisify(),
   "focused.list_hidden": cy =>
     // the listbox is there but with zero elements
     cy
       .get("[role=listbox]")
       .get("[role=option]")
-      .should("not.exist"),
-  "focused.list.empty": cy => cy.get("[role=option]").should("not.exist"),
+      .should("not.exist")
+      .promisify(),
+  "focused.list.empty": cy =>
+    cy
+      .get("[role=option]")
+      .should("not.exist")
+      .promisify(),
   "focused.list.non_empty": cy =>
     cy
       .get("[role=option]")
       .its("length")
-      .should("be.gt", 0),
+      .should("be.gt", 0)
+      .promisify(),
   "focused.list.non_empty.not_selected": cy =>
     cy
       .get(".react-autosuggest__suggestion--highlighted")
-      .should("have.length", 0),
+      .should("have.length", 0)
+      .promisify(),
   "focused.list.non_empty.selected": cy =>
     cy
       .get(".react-autosuggest__suggestion--highlighted")
       .its("length")
       .should("be.gt", 0)
+      .promisify()
 };
 
 const machineOptions = {
