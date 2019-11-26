@@ -2,14 +2,15 @@ import testPlans from "../../src/datepicker_test_plan_cypress";
 
 context("Datepicker", () => {
   beforeEach(() => {
-    cy.visit("localhost:3001");
+    cy.visit("localhost:3000");
   });
 
   testPlans.forEach(plan => {
-    plan.paths.forEach(path => {
-      console.log(path.description, path.test.toString());
-      it(path.description, async () => {
-        await path.test(cy);
+    describe(plan.description, () => {
+      plan.paths.forEach(path => {
+        it(path.description, async () => {
+          await path.test(cy);
+        });
       });
     });
   });
