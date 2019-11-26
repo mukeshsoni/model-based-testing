@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@planview/pv-uikit": "file:/Users/rithwikanand/Work/react-pvds/packages/pv-uikit",
-    "@planview/pv-utilities": "file:./../../Work/react-pvds/packages/pv-utilities",
+    "@planview/pv-utilities": "file:/Users/rithwikanand/Work/react-pvds/packages/pv-utilities",
     "@testing-library/react": "9.3.2",
     "@xstate/test": "0.1.0",
     "clone-deep": "^4.0.1",
@@ -25,6 +25,14 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/src/config/jest/jestTransform.js"
+    },
+    "moduleNameMapper": {
+      "^-!svg-react-loader.*$": "<rootDir>/src/config/jest/svgImportMock.js"
+    }
   },
   "browserslist": {
     "production": [
