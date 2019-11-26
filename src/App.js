@@ -1,12 +1,13 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import MyAutocomplete from "./Autocomplete";
+import Datepicker from "@planview/pv-uikit/lib/datepicker";
 
 function App() {
   return (
     <div className="App">
-      <MyAutocomplete />
+      <div style={{ width: 160 }}>
+        <Datepicker />
+      </div>
     </div>
   );
 }
