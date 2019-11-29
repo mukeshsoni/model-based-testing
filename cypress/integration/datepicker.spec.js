@@ -2,7 +2,7 @@ import testPlans from "../../src/datepicker_test_plan_cypress";
 
 context("Datepicker", () => {
   beforeEach(() => {
-    cy.visit("localhost:3001");
+    cy.visit("localhost:3000");
   });
 
   testPlans.forEach(plan => {

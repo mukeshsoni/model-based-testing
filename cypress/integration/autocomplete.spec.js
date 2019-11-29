@@ -17,7 +17,7 @@ context("Autocomplete", () => {
 
   it("should show autocomplete page", () => {
     cy.get("[role=option]").should("not.exist");
-    cy.get("input").focus();
+    cy.get("input[placeholder='Type a programming language']").focus();
     // cy.get("input").should("have.focus");
     // cy.get("[role=listbox]")
     // .get("[role=options]")

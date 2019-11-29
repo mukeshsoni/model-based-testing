@@ -21,18 +21,18 @@ function shouldHideList(ctx) {
 const events = {
   FOCUS: cy =>
     cy
-      .get("input")
+      .get("input[placeholder='Type a programming language']")
       .focus()
       .promisify(),
   BLUR: cy =>
     cy
-      .get("input")
+      .get("input[placeholder='Type a programming language']")
       .blur()
       .promisify(),
   CHANGE_TEXT: {
     exec: async (cy, event) => {
       await cy
-        .get("input")
+        .get("input[placeholder='Type a programming language']")
         .clear()
         .type(event.text)
         .promisify();
@@ -41,12 +41,12 @@ const events = {
   },
   ARROW_KEY: cy =>
     cy
-      .get("input")
+      .get("input[placeholder='Type a programming language']")
       .type("{downarrow}")
       .promisify(),
   ENTER_KEY: cy =>
     cy
-      .get("input")
+      .get("input[placeholder='Type a programming language']")
       .type("{enter}")
       .promisify(),
   MOUSE_CLICK_ITEM: cy => {
@@ -61,7 +61,7 @@ const events = {
   },
   MOUSE_CLICK_OUTSIDE: cy =>
     cy
-      .get("input")
+      .get("input[placeholder='Type a programming language']")
       .blur()
       .promisify()
 };
@@ -69,12 +69,12 @@ const events = {
 const stateValidators = {
   blur: async cy =>
     await cy
-      .get("input")
+      .get("input[placeholder='Type a programming language']")
       .should("not.have.focus")
       .promisify(),
   focused: cy =>
     cy
-      .get("input")
+      .get("input[placeholder='Type a programming language']")
       .should("have.focus")
       .promisify(),
   "focused.list_hidden": cy =>
