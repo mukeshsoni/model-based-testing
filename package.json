@@ -3,17 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@planview/pv-uikit": "file:/Users/rithwikanand/Work/react-pvds/packages/pv-uikit",
-    "@planview/pv-utilities": "file:/Users/rithwikanand/Work/react-pvds/packages/pv-utilities",
     "@testing-library/react": "9.3.2",
     "@xstate/test": "0.1.0",
     "clone-deep": "^4.0.1",
     "react": "^16.11.0",
     "react-autosuggest": "^9.4.3",
+    "react-datepicker": "^2.10.1",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "styled-components": "3.3.2",
-    "svg-react-loader": "0.4.5",
     "xstate": "4.6.7"
   },
   "scripts": {
@@ -25,14 +22,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js$": "<rootDir>/src/config/jest/jestTransform.js"
-    },
-    "moduleNameMapper": {
-      "^-!svg-react-loader.*$": "<rootDir>/src/config/jest/svgImportMock.js"
-    }
   },
   "browserslist": {
     "production": [
