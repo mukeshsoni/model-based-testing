@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "CI=true react-scripts test --env=jsdom",
     "cy": "cypress open",
     "eject": "react-scripts eject",
     "start-server-and-test": "start-test start 3000 test"
@@ -30,7 +30,8 @@
     "*.{js,jsx}": [
       "prettier --write",
       "eslint --fix",
-      "git add"
+      "git add",
+      "npm run test -- --bail --passWithNoTests --findRelatedTests"
     ],
     "*.{json,md}": [
       "prettier --write",

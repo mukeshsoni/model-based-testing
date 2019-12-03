@@ -7,6 +7,7 @@ import { withStateValidators, requiredStateValidators } from "../utils/glue";
 
 import { getSuggestions } from "../../matchers";
 
+// probably need a better search algorithm
 function matches(ctx) {
   return getSuggestions(ctx.text).length !== 0;
 }
