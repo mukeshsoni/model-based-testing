@@ -15,6 +15,7 @@ function doesNotMatch(ctx) {
   return !matches(ctx);
 }
 
+// When there's no text in input box or it's an empty string
 function shouldHideList(ctx) {
   return !ctx.text || ctx.text.length === 0;
 }
