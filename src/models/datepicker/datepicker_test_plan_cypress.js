@@ -2,7 +2,7 @@ import { Machine } from "xstate";
 import { createModel } from "@xstate/test";
 
 import { machineConfig, options } from "./datepicker_machine";
-import { withStateValidators } from "./glue";
+import { withStateValidators } from "../utils/glue";
 
 const randomNumber = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;

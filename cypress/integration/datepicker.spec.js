@@ -1,4 +1,4 @@
-import testPlans from "../../src/datepicker_test_plan_cypress";
+import testPlans from "../../src/models/datepicker/datepicker_test_plan_cypress";
 
 context("Datepicker", () => {
   beforeEach(() => {

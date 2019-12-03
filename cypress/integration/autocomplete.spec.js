@@ -1,4 +1,4 @@
-import testPlans from "../../src/test_plans_cypress";
+import testPlans from "../../src/models/autocomplete/test_plans_cypress";
 
 context("Autocomplete", () => {
   beforeEach(() => {

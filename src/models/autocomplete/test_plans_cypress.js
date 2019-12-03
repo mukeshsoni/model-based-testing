@@ -2,9 +2,9 @@ import { Machine, assign } from "xstate";
 import { createModel } from "@xstate/test";
 
 import { machineConfig } from "./autocomplete_machine";
-import { withStateValidators, requiredStateValidators } from "./glue";
+import { withStateValidators, requiredStateValidators } from "../utils/glue";
 
-import { getSuggestions } from "./matchers";
+import { getSuggestions } from "../../matchers";
 
 function matches(ctx) {
   return getSuggestions(ctx.text).length !== 0;
